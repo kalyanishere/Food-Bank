@@ -1,0 +1,35 @@
+BEGIN TRANSACTION;
+CREATE TABLE "Account" (
+	sf_id VARCHAR(255) NOT NULL, 
+	"Name" VARCHAR(255), 
+	parent_id VARCHAR(255), 
+	PRIMARY KEY (sf_id)
+);
+INSERT INTO "Account" VALUES('0010w00000ALxBCAA1','My Account 1','');
+INSERT INTO "Account" VALUES('0010w00000ALxBHAA1','My Account 2','');
+CREATE TABLE "Delivery_Item__c" (
+	sf_id VARCHAR(255) NOT NULL, 
+	"Name" VARCHAR(255), 
+	"Food_Expiration_Date__c" VARCHAR(255), 
+	"Food_Storage__c" VARCHAR(255), 
+	delivery__c VARCHAR(255), 
+	PRIMARY KEY (sf_id)
+);
+INSERT INTO "Delivery_Item__c" VALUES('a000w0000026707AAA','Item 1','2020-05-16','Frozen','a010w000002KtArAAK');
+INSERT INTO "Delivery_Item__c" VALUES('a000w000002670CAAQ','Item 1','2020-05-15','Refrigerated','a010w000002KtAmAAK');
+INSERT INTO "Delivery_Item__c" VALUES('a000w000002670DAAQ','Item','2020-05-16','Frozen','a010w000002KtAhAAK');
+INSERT INTO "Delivery_Item__c" VALUES('a000w0000026702AAA','Item 1','2020-05-17','Non-refrigerated','a010w000002KtAwAAK');
+INSERT INTO "Delivery_Item__c" VALUES('a000w000002670HAAQ','Item','','Non-refrigerated','a010w000002KtAcAAK');
+CREATE TABLE "Delivery__c" (
+	sf_id VARCHAR(255) NOT NULL, 
+	"Scheduled_Date__c" VARCHAR(255), 
+	"Status__c" VARCHAR(255), 
+	supplier__c VARCHAR(255), 
+	PRIMARY KEY (sf_id)
+);
+INSERT INTO "Delivery__c" VALUES('a010w000002KtAmAAK','2020-05-12T19:00:00.000Z','Completed','0010w00000ALxBHAA1');
+INSERT INTO "Delivery__c" VALUES('a010w000002KtAhAAK','2020-05-15T19:00:00.000Z','Scheduled','0010w00000ALxBCAA1');
+INSERT INTO "Delivery__c" VALUES('a010w000002KtAcAAK','2020-05-14T19:00:00.000Z','Requested','0010w00000ALxBCAA1');
+INSERT INTO "Delivery__c" VALUES('a010w000002KtAwAAK','2020-05-16T19:00:00.000Z','Scheduled','0010w00000ALxBHAA1');
+INSERT INTO "Delivery__c" VALUES('a010w000002KtArAAK','2020-05-12T19:00:00.000Z','Canceled','0010w00000ALxBCAA1');
+COMMIT;
