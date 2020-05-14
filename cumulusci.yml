@@ -4,6 +4,7 @@ project:
     package:
         name:  Food-Bank
         api_version: '48.0'
+        namespace: fud_bnk
     source_format: sfdx
 
 tasks:
@@ -25,4 +26,4 @@ flows:
     config_dev:
         steps:
             3:
-                task: load_dataset
+                task: load_datasetclear
